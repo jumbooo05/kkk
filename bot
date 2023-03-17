@@ -1,0 +1,30 @@
+import random
+import telegram
+from telegram.ext import Updater, CommandHandler
+
+# Токен вашего бота
+TOKEN = '6174080582:AAEJUykXHCSSvyR9E-6mlwW-FuhAj74AeNw'
+
+# ID чата вашей девушки
+CHAT_ID = ‘8’26255016
+
+# База данных комплиментов
+COMPLIMENTS = ['Ты самая красивая!', 'Ты умнее, чем думаешь!', 'Ты очень талантливая!', 'Ты всегда меня вдохновляешь!', 'Ты прекрасна как внешне, так и внутри!', 'Твой смех делает мой день ярче!']
+
+# Создаем экземпляр бота
+bot = telegram.Bot(token=TOKEN)
+
+# Функция для отправки случайного комплимента
+def send_compliment():
+    compliment = random.choice(COMPLIMENTS)
+    bot.send_message(chat_id=CHAT_ID, text=compliment)
+
+# Функция для запуска бота
+def start_bot():
+    updater = Updater(token=TOKEN, use_context=True)
+    dispatcher = updater.dispatcher
+    dispatcher.add_handler(CommandHandler('start', send_compliment))
+    updater.start_polling()
+
+# Запускаем бота
+start_bot()
