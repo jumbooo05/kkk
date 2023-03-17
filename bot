@@ -2,7 +2,6 @@ import random
 import telegram
 from telegram.ext import Updater, CommandHandler
 
-# Токен вашего бота
 TOKEN = '6174080582:AAEJUykXHCSSvyR9E-6mlwW-FuhAj74AeNw'
 
 CHAT_ID = ‘826255016’
